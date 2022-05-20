@@ -27,6 +27,41 @@ $(document).ready(function()
         promesa.then( value => document.getElementById("enca").innerHTML = value);
 
     });
+
+
+    $('#botonJsonFetch').click(function(){
+        let promesa = fetch('getregistro.php');
+
+        promesa.then(respuesta => respuesta.json())
+        .then(function(dato) {refrescar(dato) });
+
+    });
+    
+
+
+
+
+
+    $("#botonModalSweet").click(function(){
+        swal({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success",
+            button: "Aww yiss!",
+          });
+        });  
+
+
+
+        function refrescar(objeto){
+            $('#nombre').val(objeto.nombre);
+            $('#apellidos').val(objeto.apellidos);
+            $('#telefono').val(objeto.telefono);
+            $('#correo').val(objeto.correo);
+            $('#boleto').val(objeto.boleto);
+            $('#asiento').val(objeto.asiento);
+
+        }
 });
 
 
