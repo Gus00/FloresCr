@@ -55,7 +55,8 @@ $(document).ready(function()
 
         function refrescar(objeto){
             $('#nombre').val(objeto.nombre);
-            $('#apellidos').val(objeto.apellidos);
+            $('#apellidoMaterno').val(objeto.apellidoMaterno);
+            $('#apellidoPaterno').val(objeto.apellidoPaterno);
             $('#telefono').val(objeto.telefono);
             $('#correo').val(objeto.correo);
             $('#boleto').val(objeto.boleto);

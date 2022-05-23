@@ -1,6 +1,7 @@
 <?php
 $registro['nombre'] = 'Jose';
-$registro['apellidos'] = 'Madero';
+$registro['apellidoMaterno'] = 'Madero';
+$registro['apellidoPaterno'] = 'Vizcaino';
 $registro['telefono'] = '8674641445';
 $registro['correo'] = 'correo@hotmail.com';
 $registro['boleto'] = 'Normal';
