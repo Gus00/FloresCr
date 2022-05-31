@@ -4,4 +4,8 @@ body{
     background-size: cover;
     background-repeat:no-repeat;
     background-position: center center;
+
+    font: small-caps 150%/200% serif;
+    
+
 }

@@ -20,7 +20,14 @@
 
 <style>
 
+p{
+        color: white;
+ }
 
+  h3{
+    color: white;
+    }
+    
 </style>
 <body>
 
@@ -36,36 +43,45 @@
      
     <div class="row">
         <div class="col-sm-12 col-md-6 col-sm-6 text-center col1">
-            <p>Nombre</p>
-            <input  id="nombre" ,type="text">
+            <p>id</p>
+            <input  id="id" ,type="text" disabled>
             </div>
+            <div class="col-sm-12 col-md-6 col-sm-6 text-center col2">
+              <p> Nombre </p>
+               <input id="nombre" type="text" >
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-sm-6 text-center col5">
+                <p>Apellido Materno</p>
+                <input id="apellidoMaterno" type="text">
+                </div>
     <div class="col-sm-12 col-md-6 col-sm-6 text-center col2">
-        <p> Apellido Materno </p>
-         <input id="apellidoMaterno" type="text" >
+        <p> Apellido Paterno </p>
+         <input id="apellidoPaterno" type="text" >
         </div>
-        <div class="col-sm-12 col-md-6 col-sm-6 text-center col5">
-          <p>Apellido Paterno</p>
-          <input id="apellidoPaterno" type="text">
-          </div>
+        
+         
     </div>
  
         <div class="row">
         <div class="col-sm-12 col-md-6 col-sm-6 text-center col3">
-            <p>Numero Telefono</p>
-            <input id="telefono" type="text">
+            <p>Correo Electronico</p>
+            <input id="correo" type="text">
             </div>
+            <div class="col-sm-12 col-md-6 col-sm-6 text-center col5">
+              <p>Numero de Telefono</p>
+              <input id="telefono" type="text" >
+              </div>
             <div class="col-sm-12 col-md-6 col-sm-6 text-center col4">
-                <p>Correo Electronico de PayPal</p>
-                <input id="correo" type="text">
+                <p>Tipo de Boleto</p>
+                <input id="boleto" type="text">
                 </div>
                 <div class="col-sm-12 col-md-6 col-sm-6 text-center col4">
-                  <p>Tipo de Boleto</p>
-                  <input id="boleto" type="text">
+                  <p>¿Requiere de asiento para personas con discapacidad?</p>
+                  <input id="asiento" type="text">
                   </div>
-                  <div class="col-sm-12 col-md-6 col-sm-6 text-center col4">
-                    <p>¿Requiere de asiento para personas con discapacidad?</p>
-                    <input id="asiento" type="text">
-                    </div>
+                 
+                 
                     
             </div>
  
@@ -73,7 +89,10 @@
  <br> <br>
  
 
-<button id="botonBuscar" type="button" class="btn btn-primary">Boton Buscar</button>
+<button id="botonBuscar" type="button" class="btn btn-primary">Buscar</button>
+<button id="botonModificar" type="button" class="btn btn-primary">Modificar</button>
+<button id="botonEliminar" type="button" class="btn btn-primary">Eliminar</button>
+<button id="botonRegistrar" type="button" class="btn btn-primary">Registrar</button>
 
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
