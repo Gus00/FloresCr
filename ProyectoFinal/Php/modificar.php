@@ -1,5 +1,13 @@
 <?php
 
+
+
+$hostname='localhost';
+$database='L19100180';
+$username='root';
+$password='2701';
+$port='3306';
+
 $paridCte=$_POST['par1'];
 $nombre=$_POST['par2'];
 $apellidoMaterno=$_POST['par3'];
@@ -8,13 +16,6 @@ $telefono=$_POST['par5'];
 $correo=$_POST['par6'];
 $boleto=$_POST['par7'];
 $asiento=$_POST['par8'];
-
-$hostname='localhost';
-$database='L19100180';
-$username='root';
-$password='2701';
-$port='3306';
-
 
 
 
@@ -38,7 +39,7 @@ try {
                     ",correoElectronico=".$correo.
                     ",TipoBoleto=".$boleto.
                     ",asientoEspecial=".$asiento.
-                    "where id_Comprador=".$paridCte;
+                    "where id_Comprador=".$paridCte.";";
 
     $consulta = $con -> prepare($consultaSql);
     $consulta -> execute();

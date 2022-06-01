@@ -8,6 +8,15 @@ $username='root';
 $password='2701';
 $port='3306';
 
+$paridCte=$_POST['par1'];
+$nombre=$_POST['par2'];
+$apellidoMaterno=$_POST['par3'];
+$apellidoPaterno=$_POST['par4'];
+$telefono=$_POST['par5'];
+$correo=$_POST['par6'];
+$boleto=$_POST['par7'];
+$asiento=$_POST['par8'];
+
 try {
     $con = new PDO("mysql:host=$hostname;dbname=$database",$username,$password);
 
@@ -19,7 +28,7 @@ try {
 
 //$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 try {
-    $consultaSql = "insert into comprador values";
+    $consultaSql = "insert into comprador values (null,",.$nombre.",".$apellidoMaterno.",".$apellidoPaterno.",".$telefono.",".$correo.",".$boleto.",".$asiento.",".$paridCte.")";
     $consulta = $con -> prepare($consultaSql);
     $consulta -> execute();
     $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
