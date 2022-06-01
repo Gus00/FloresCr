@@ -1,6 +1,13 @@
 <?php
 
 $paridCte=$_POST['par1'];
+$nombre=$_POST['par2'];
+$apellidoMaterno=$_POST['par3'];
+$apellidoPaterno=$_POST['par4'];
+$telefono=$_POST['par5'];
+$correo=$_POST['par6'];
+$boleto=$_POST['par7'];
+$asiento=$_POST['par8'];
 
 $hostname='localhost';
 $database='L19100180';
@@ -10,13 +17,7 @@ $port='3306';
 
 
 
-$nombre=$_POST['#nombre'].val();
-$apellidoMaterno=$_POST['#apellidoMaterno'].val();
-$apellidoPaterno=$_POST['#apellidoPaterno'].val();
-$telefono=$_POST['#telefono'].val();
-$correo=$_POST['#correo'].val();
-$boleto=$_POST['#boleto'].val();
-$asiento=$_POST['#asiento'].val();
+
 
 try {
     $con = new PDO("mysql:host=$hostname;dbname=$database",$username,$password);
@@ -29,17 +30,26 @@ try {
 
 
 try {
-    $consultaSql = "UPDATE comprador set nombre=".$nombre, "apellidoMaterno=".$apellidoMaterno, "apellidoPaterno=".$apellidoPaterno, 
-    "numeroTelefono=".$telefono, "correoElectronico=".$correo, "TipoBoleto=".$boleto, "asientoEspecial=".$asiento,"where id_Comprador=".$paridCte;
+    
+    $consultaSql = "UPDATE comprador set nombre= ".$nombre.
+                    ",apellidoMaterno=".$apellidoMaterno.
+                    ",apellidoPaterno=".$apellidoPaterno.
+                    ",numeroTelefono=".$telefono.
+                    ",correoElectronico=".$correo.
+                    ",TipoBoleto=".$boleto.
+                    ",asientoEspecial=".$asiento.
+                    "where id_Comprador=".$paridCte;
+
     $consulta = $con -> prepare($consultaSql);
     $consulta -> execute();
     $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
     $consulta->closeCursor();
-    echo "exito";
+    
 
 } catch (PDOException $e) {
 echo "Error de consulta a la base de datos";
 echo $e->getMessage();
 }
+
 echo json_encode($resultado);
 ?>

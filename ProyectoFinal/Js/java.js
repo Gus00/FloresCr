@@ -23,9 +23,18 @@ $(document).ready(function()
         });
 
         $('#botonModificar').click(function() {     
-            let varid = document.getElementById("id").value;            
-            $.post('Php/modificar.php',{par1:varid},function(data){
+            let varid = document.getElementById("id").value;
+            let varnombre = document.getElementById("nombre").value;
+            let varapMaterno = document.getElementById("apellidoMaterno").value;
+            let varapPaterno = document.getElementById("apellidoPaterno").value;
+            let vartelefono = document.getElementById("telefono").value;
+            let varcorreo = document.getElementById("correo").value;
+            let varboleto = document.getElementById("boleto").value;
+            let varasiento = document.getElementById("asiento").value;       
+            $.post('Php/modificar.php',{par1:varid,par2:varnombre,par3:varapMaterno,par4:varapPaterno,par5:vartelefono,par6:varcorreo,par7:varboleto,par8:varasiento},function(data){
                 refrescar(data);    
+                console.log("hola")
+
             },'json');
 
         });

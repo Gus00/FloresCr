@@ -17,7 +17,7 @@ try {
    exit();
 }
 
-//$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 try {
     $consultaSql = "select * from comprador where id_Comprador=".$paridCte;
     $consulta = $con -> prepare($consultaSql);
