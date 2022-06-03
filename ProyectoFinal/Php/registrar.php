@@ -8,7 +8,7 @@ $username='root';
 $password='2701';
 $port='3306';
 
-$paridCte=$_POST['par1'];
+
 $nombre=$_POST['par2'];
 $apellidoMaterno=$_POST['par3'];
 $apellidoPaterno=$_POST['par4'];
@@ -30,18 +30,24 @@ try {
 
 //$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 try {
-    $consultaSql = " insert into comprador values (null,'".$nombre.
-    " ',' ".$apellidoMaterno.
-    "','".$apellidoPaterno.
-    "','".$telefono.
-    "','".$correo.
-    "','".$boleto.
-    "','".$asiento."');";
-    $consulta = $con -> prepare($consultaSql);
-    $consulta -> execute();
-    $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
-    $consulta->closeCursor();
-    $operacion=1;
+    if ($nombre != null) {
+        $consultaSql = " insert into comprador values (null,'".$nombre.
+        " ',' ".$apellidoMaterno.
+        "','".$apellidoPaterno.
+        "','".$telefono.
+        "','".$correo.
+        "','".$boleto.
+        "','".$asiento."');";
+        $consulta = $con -> prepare($consultaSql);
+        $consulta -> execute();
+        $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+        $consulta->closeCursor();
+        $operacion=true;
+    } else {
+        $operacion=false;
+    }
+    
+   
 
 } catch (PDOException $e) {
 echo "Error de consulta a la base de datos";
