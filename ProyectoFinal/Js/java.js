@@ -16,7 +16,9 @@ $(document).ready(function()
         
         $('#botonBuscar').click(function() {
          /#   let varid = prompt('Id a consultar'); */
-         $('#ModalID').modal('show')
+        let varid= $('#ModalID').modal('show')
+           
+         
             $.post('Php/consulta.php',{par1:varid},function(data){
                 refrescar(data);
             },'json');
