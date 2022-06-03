@@ -15,8 +15,8 @@ $(document).ready(function()
 
         
         $('#botonBuscar').click(function() {
-            let varid = prompt('Id a consultar');
-        
+         /#   let varid = prompt('Id a consultar'); */
+         $('#ModalID').modal('show')
             $.post('Php/consulta.php',{par1:varid},function(data){
                 refrescar(data);
             },'json');
@@ -32,20 +32,36 @@ $(document).ready(function()
             let varboleto = document.getElementById("boleto").value;
             let varasiento = document.getElementById("asiento").value;       
             $.post('Php/modificar.php',{par1:varid,par2:varnombre,par3:varapMaterno,par4:varapPaterno,par5:vartelefono,par6:varcorreo,par7:varboleto,par8:varasiento},function(data){
-                refrescar(data);    
-            },'json');
-
+               var ver = data; 
+                refrescar(data);  
+                console.log(ver);
+                if (ver==true) {
+                    $('#ModalExito').modal('show')
+                } else {
+                    $('#ModalError').modal('show')
+                }; 
+                },'json');
+                
         });
+
 
         $('#botonEliminar').click(function() {
             let varid = document.getElementById("id").value;
         
             $.post('Php/eliminar.php',{par1:varid},function(data){
-                refrescar(data);
+                var ver = data; 
+                refrescar(data);  
+                console.log(ver);
+                if (ver==true) {
+                    $('#ModalExito').modal('show')
+                } else {
+                    $('#ModalError').modal('show')
+                }; 
             },'json');
+            
         });
 
-        $('#botonModificar').click(function() {     
+        $('#botonRegistrar').click(function() {     
             let varid = document.getElementById("id").value;
             let varnombre = document.getElementById("nombre").value;
             let varapMaterno = document.getElementById("apellidoMaterno").value;
@@ -55,7 +71,8 @@ $(document).ready(function()
             let varboleto = document.getElementById("boleto").value;
             let varasiento = document.getElementById("asiento").value;       
             $.post('Php/registrar.php',{par1:varid,par2:varnombre,par3:varapMaterno,par4:varapPaterno,par5:vartelefono,par6:varcorreo,par7:varboleto,par8:varasiento},function(data){
-                refrescar(data);    
+             refrescar(data);    
+                $('#ModalExito').modal('show')
             },'json');
 
         });

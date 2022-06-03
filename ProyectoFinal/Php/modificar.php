@@ -17,7 +17,7 @@ $correo=$_POST['par6'];
 $boleto=$_POST['par7'];
 $asiento=$_POST['par8'];
 
-
+$operacion;
 
 
 try {
@@ -31,26 +31,31 @@ try {
 
 
 try {
-    
-    $consultaSql = "UPDATE comprador set nombre= ".$nombre.
-                    ",apellidoMaterno=".$apellidoMaterno.
-                    ",apellidoPaterno=".$apellidoPaterno.
-                    ",numeroTelefono=".$telefono.
-                    ",correoElectronico=".$correo.
-                    ",TipoBoleto=".$boleto.
-                    ",asientoEspecial=".$asiento.
-                    "where id_Comprador=".$paridCte.";";
+    if (!($paridCte == null) ) {
+    $consultaSql = "UPDATE comprador set nombre= '".$nombre.
+                    "',apellidoMaterno='".$apellidoMaterno.
+                    "',apellidoPaterno='".$apellidoPaterno.
+                    "',numeroTelefono='".$telefono.
+                    "',correoElectronico='".$correo.
+                    "',TipoBoleto='".$boleto.
+                    "',asientoEspecial='".$asiento.
+                    "'where id_Comprador=".$paridCte.";";
 
     $consulta = $con -> prepare($consultaSql);
     $consulta -> execute();
     $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
     $consulta->closeCursor();
-    
-
-} catch (PDOException $e) {
+    $operacion=true;
+}
+else{
+    $operacion=false;
+}
+} 
+catch (PDOException $e) {
 echo "Error de consulta a la base de datos";
 echo $e->getMessage();
+
 }
 
-echo json_encode($resultado);
+echo json_encode($operacion);
 ?>

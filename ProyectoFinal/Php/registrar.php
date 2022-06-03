@@ -17,6 +17,8 @@ $correo=$_POST['par6'];
 $boleto=$_POST['par7'];
 $asiento=$_POST['par8'];
 
+$operacion;
+
 try {
     $con = new PDO("mysql:host=$hostname;dbname=$database",$username,$password);
 
@@ -28,15 +30,23 @@ try {
 
 //$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 try {
-    $consultaSql = "insert into comprador values (null,",.$nombre.",".$apellidoMaterno.",".$apellidoPaterno.",".$telefono.",".$correo.",".$boleto.",".$asiento.",".$paridCte.")";
+    $consultaSql = " insert into comprador values (null,'".$nombre.
+    " ',' ".$apellidoMaterno.
+    "','".$apellidoPaterno.
+    "','".$telefono.
+    "','".$correo.
+    "','".$boleto.
+    "','".$asiento."');";
     $consulta = $con -> prepare($consultaSql);
     $consulta -> execute();
     $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
     $consulta->closeCursor();
+    $operacion=1;
 
 } catch (PDOException $e) {
 echo "Error de consulta a la base de datos";
 echo $e->getMessage();
+
 }
-echo json_encode($resultado);
+echo json_encode( $operacion);
 ?>
