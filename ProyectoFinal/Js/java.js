@@ -16,15 +16,13 @@ $(document).ready(function()
         
         $('#botonBuscar').click(function() {
      /*  let varid = prompt('Id a consultar'); */ 
-     
-           $('#ModalID').modal('show'); 
-           let varid= document.getElementById("idbuscar").value;
-         
-           
-        
-            $.post('Php/consulta.php',{par1:varid},function(data){
+        $('#ModalID').modal('show'); 
+         let varid= document.getElementById("idbuscar").value;    
+      $.post('Php/consulta.php',{par1:varid},function(data){
                 refrescar(data);
+
             },'json');
+           
         });
 
         $('#botonModificar').click(function() {     
