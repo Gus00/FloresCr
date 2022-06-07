@@ -16,13 +16,17 @@ $(document).ready(function()
         
         $('#botonBuscar').click(function() {
      /*  let varid = prompt('Id a consultar'); */ 
-        $('#ModalID').modal('show'); 
-         let varid= document.getElementById("idbuscar").value;    
+    
+     $('#ModalID').modal();
+     $('#ModalID').on('hidden.bs.modal',function (e) {
+    let varid= $('#idbuscar').val();    
+        console.log(varid);
+           
       $.post('Php/consulta.php',{par1:varid},function(data){
                 refrescar(data);
 
             },'json');
-           
+        }); 
         });
 
         $('#botonModificar').click(function() {     
@@ -77,7 +81,7 @@ $(document).ready(function()
       
                 $.post('Php/registrar.php',{par2:varnombre,par3:varapMaterno,par4:varapPaterno,par5:vartelefono,par6:varcorreo,par7:varboleto,par8:varasiento},function(data){
                     var ver = data
-                    refrescar(data);  
+                   
                     if (ver==true) {
                         $('#ModalExito').modal('show')
                     } else {
